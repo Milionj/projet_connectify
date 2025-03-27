@@ -1,0 +1,265 @@
+@import url('https://fonts.googleapis.com/css2?family=Chicle&family=Gravitas+One&family=Inter&display=swap');
+
+/* Reset complet du navigateur */
+/* RESET GLOBAL ABSOLU */
+* {
+  margin: 0 !important;
+  padding: 0 !important;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  width: 100vw !important;
+  height: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow-x: hidden !important;
+  background: white;
+}
+
+.home-container {
+  width: 100%;
+  overflow-x: hidden;
+  width: 100%;
+  
+}
+
+html, body, #root {
+  width: 100%;
+  height: 100%;
+}
+
+/* Section 1 - vidéo d’intro */
+.section-intro {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+}
+
+.background-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.intro-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.bienvenue-text {
+  font-size: 15rem;
+  color: #DACA3BBA;
+  font-family: "Chicle", serif;
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8);
+}
+
+
+/* Section 2 - Bienvenue */
+.section-bienvenue {
+  position: relative;
+  width: 100%;
+  height: 100vh; /* pleine hauteur d'écran */
+  background-image: url('/images/radio.png');
+  background-size: cover;
+  background-position: center;
+}
+
+.bienvenue-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(218, 202, 59, 0.6); /* jaune semi-transparent */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  text-align: center;
+}
+
+.section-bienvenue h2 {
+  font-size: 5rem;
+  font-family: 'Gravitas One', cursive;
+  color: #004d40;
+  margin-bottom: 1rem;
+}
+
+.section-bienvenue p {
+  font-size: 1.3rem;
+  color: white;
+  font-family: 'Inter', sans-serif;
+}
+
+
+
+/* Section 3 - Actualité */
+.section-actualite-2cols {
+  display: flex;
+  width: 100%;
+  height: 100vh; /* prend toute la hauteur de l’écran */
+}
+
+.actualite-image {
+  flex: 1;
+  background-image: url('/images/casette.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.actualite-text {
+  flex: 1;
+  background-color: #2f7e5b;
+  padding: 3rem;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; 
+  align-items: center;     
+  text-align: center;
+}
+
+
+.actualite-text h2 {
+  font-size: 3rem;
+  font-family: 'Gravitas One', cursive;
+  color: #DACA3B;
+  margin-bottom: 2rem;
+}
+
+.actualite-text p {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.2rem;
+  line-height: 2;
+  text-align: justify;
+  max-width: 90%;
+}
+
+/* SECTION QUI SOMMES NOUS */
+.section-qui {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  background-color: #2f7e5b;
+}
+
+.qui-text {
+  flex: 1;
+  padding: 4rem;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Inter', sans-serif;
+  text-align: center;
+}
+
+.qui-text h2 {
+  font-size: 3rem;
+  font-family: 'Gravitas One', cursive;
+  color: #DACA3B;
+  margin-bottom: 2rem;
+}
+
+.qui-text p {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  max-width: 600px;
+  text-align: justify;
+}
+
+.qui-image {
+  flex: 1;
+  background-image: url('/images/poeple.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+
+/* SECTION CONTACT */
+.section-contact {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  background-color: #2f7e5b;
+}
+
+.contact-image {
+  flex: 1;
+  background-image: url('/images/mecstylé.png');
+  background-size: cover;
+  background-position: center;
+}
+
+.contact-form {
+  flex: 1;
+  padding: 4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.contact-form h2 {
+  font-size: 2.5rem;
+  color: #DACA3B;
+  font-family: 'Gravitas One', cursive;
+  margin-bottom: 2rem;
+}
+
+.contact-form form {
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 1rem;
+  font-size: 1rem;
+  font-family: 'Inter', sans-serif;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+}
+
+.contact-form textarea {
+  min-height: 120px;
+  resize: none;
+}
+
+.contact-form button {
+  padding: 1rem;
+  background-color: #DACA3B;
+  color: white;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.contact-form button:hover {
+  background-color: #bba72c;
+}
+
+.error {
+  color: red;
+  margin-top: 1rem;
+  font-family: 'Inter', sans-serif;
+  text-align: center;
+}
+
