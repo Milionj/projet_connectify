@@ -1,5 +1,7 @@
 import React from 'react';
 import './Home.css';
+import Footer from '../components/Footer'; // adapte le chemin si besoin
+import MultilangWelcome from '../components/MultilangWelcome';
 
 function Home() {
 
@@ -53,10 +55,11 @@ function Home() {
       {/* SECTION 2 : Bienvenue */}
       <section className="section-bienvenue">
   <div className="bienvenue-overlay">
-    <h2>Bienvenue</h2>
+    <MultilangWelcome />
     <p>“Harmonisez vos passions, partagez vos émotions avec Connectify !”</p>
   </div>
 </section>
+
 
 
       {/* SECTION 3 : Actualité */}
@@ -112,6 +115,9 @@ function Home() {
     </form>
   </div>
 </section>
+
+<Footer />
+
 
 
     </div>

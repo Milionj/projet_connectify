@@ -1,18 +1,19 @@
-import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { auth } from '../firebase';
 import { onAuthStateChanged, signOut } from 'firebase/auth';
-import { useEffect, useState } from 'react';
+import './Navbar.css';
 
 function Navbar() {
   const [user, setUser] = useState(null);
   const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
     });
-    return () => unsubscribe(); // nettoyage
+    return () => unsubscribe();
   }, []);
 
   const handleLogout = async () => {
@@ -21,30 +22,40 @@ function Navbar() {
   };
 
   return (
-    <nav className="bg-[#216249] px-6 py-4 text-white shadow flex justify-between items-center">
-      <Link to="/" className="text-xl font-bold tracking-wide">Connectify</Link>
+    <nav className="navbar">
+      <div className="navbar-container">
+        <Link to="/" className="navbar-logo">Connectify</Link>
 
-      <ul className="flex gap-5 items-center text-sm">
-        <li><Link to="/" className="hover:text-[#daca3b]">Accueil</Link></li>
+        <ul className="navbar-links">
+          <li>
+            <Link to="/" className={location.pathname === '/' ? 'active' : ''}>
+              Accueil
+            </Link>
+          </li>
 
-        {!user && (
-          <>
-            <li><Link to="/login" className="hover:text-[#daca3b]">Connexion</Link></li>
-            <li><Link to="/signup" className="hover:text-[#daca3b]">Inscription</Link></li>
-          </>
-        )}
+          {!user && (
+            <>
+              <li><Link to="/login">Connexion</Link></li>
+              <li>
+                <Link to="/signup" className="btn-inscription">
+                  Inscription
+                </Link>
+              </li>
+            </>
+          )}
 
-        {user && (
-          <>
-            <li><Link to="/profile" className="hover:text-[#daca3b]">Profil</Link></li>
-            <li>
-              <button onClick={handleLogout} className="hover:text-[#daca3b]">
-                Déconnexion
-              </button>
-            </li>
-          </>
-        )}
-      </ul>
+          {user && (
+            <>
+              <li><Link to="/profile">Profil</Link></li>
+              <li>
+                <button onClick={handleLogout} className="logout-btn">
+                  Déconnexion
+                </button>
+              </li>
+            </>
+          )}
+        </ul>
+      </div>
     </nav>
   );
 }
