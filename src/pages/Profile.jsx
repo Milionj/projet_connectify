@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { auth, db } from '../firebase';
 import { doc, getDoc } from 'firebase/firestore';
 import { onAuthStateChanged } from 'firebase/auth';
+import DOMPurify from 'dompurify';
 import './Profile.css';
 import Footer from '../components/Footer';
 import Navbar from '../components/Navbar';
@@ -12,6 +13,7 @@ export default function Profile() {
   const [loading, setLoading] = useState(true);
   const [activeSection, setActiveSection] = useState('all');
   const [modalImage, setModalImage] = useState(null);
+  const [message, setMessage] = useState(''); // 🔒 message utilisateur
 
   const navigate = useNavigate();
 
@@ -23,7 +25,7 @@ export default function Profile() {
           setUserData(userDoc.data());
         }
       } else {
-        navigate('/login'); // Redirection à ajuster si nécessaire
+        navigate('/login');
       }
       setLoading(false);
     });
@@ -34,24 +36,25 @@ export default function Profile() {
 
   return (
     <div className="profile-page">
-<header className="profile-header">
-  <div className="banner-image">
-    <div className="profile-overlay">
-      <div
-        className="avatar"
-        style={{ backgroundImage: `url(${userData?.avatarUrl || '/images/avatar-default.png'})` }}
-      ></div>
-      <div className="profile-name-box">
-        <h2 className="profile-nom">{userData?.nom || 'Nom'}</h2>
-        <h2 className="profile-prenom">{userData?.prenom || 'Prénom'}</h2>
-      </div>
-    </div>
-  </div>
-</header>
+      <Navbar />
 
+      {/* ======== BANNIÈRE ======== */}
+      <header className="profile-header">
+        <div className="banner-image">
+          <div className="profile-overlay">
+            <div
+              className="avatar"
+              style={{ backgroundImage: `url(${userData?.avatarUrl || '/images/avatar-default.png'})` }}
+            ></div>
+            <div className="profile-name-box">
+              <h2 className="profile-nom">{userData?.nom || 'Nom'}</h2>
+              <h2 className="profile-prenom">{userData?.prenom || 'Prénom'}</h2>
+            </div>
+          </div>
+        </div>
+      </header>
 
-
-
+      {/* ======== CORPS ======== */}
       <main className="profile-main-wrapper">
         <aside className="profile-sidebar">
           {['all', 'walls', 'gallery', 'video', 'music'].map((section) => (
@@ -66,6 +69,7 @@ export default function Profile() {
         </aside>
 
         <section className="profile-content">
+          {/* ==== WALL ==== */}
           {(activeSection === 'all' || activeSection === 'walls') && (
             <section className="profile-walls">
               <h2 className="section-title">My Walls</h2>
@@ -77,12 +81,23 @@ export default function Profile() {
                   </div>
                   <div className="wall-image-section">
                     <img src="/images/homer.jpeg" alt="Wall" className="wall-image" />
-                    <p className="wall-comment">J'aime le classique...</p>
+                    <div
+                      className="wall-comment"
+                      dangerouslySetInnerHTML={{
+                        __html: DOMPurify.sanitize(message),
+                      }}
+                    />
                     <span className="wall-time">14:20</span>
                   </div>
                 </div>
                 <div className="message-box">
-                  <input type="text" className="comment-input" placeholder="Écrivez un message..." />
+                  <input
+                    type="text"
+                    className="comment-input"
+                    placeholder="Écrivez un message..."
+                    value={message}
+                    onChange={(e) => setMessage(e.target.value)}
+                  />
                   <div className="icons">
                     <button className="btn-download"></button>
                     <button className="btn-send"></button>
@@ -92,6 +107,7 @@ export default function Profile() {
             </section>
           )}
 
+          {/* ==== GALLERY ==== */}
           {(activeSection === 'all' || activeSection === 'gallery') && (
             <section className="profile-gallery">
               <h2 className="section-title">Gallery</h2>
@@ -109,6 +125,7 @@ export default function Profile() {
             </section>
           )}
 
+          {/* ==== MODAL ==== */}
           {modalImage && (
             <div className="modal-overlay" onClick={() => setModalImage(null)}>
               <div className="modal-content" onClick={(e) => e.stopPropagation()}>
@@ -118,6 +135,7 @@ export default function Profile() {
             </div>
           )}
 
+          {/* ==== VIDEO ==== */}
           {(activeSection === 'all' || activeSection === 'video') && (
             <section className="profile-video">
               <h2 className="section-title">Video</h2>
@@ -130,6 +148,7 @@ export default function Profile() {
             </section>
           )}
 
+          {/* ==== MUSIC ==== */}
           {(activeSection === 'all' || activeSection === 'music') && (
             <section className="profile-music">
               <h2 className="section-title">Music</h2>
@@ -142,7 +161,7 @@ export default function Profile() {
                   </audio>
                 </div>
                 <div className="music-item">
-                  <img className="music-cover" src="/album-hop.png" alt="Cover 2" />
+                  <img className="music-cover" src="/images/album-hop.png" alt="Cover 2" />
                   <p className="music-title">Grange - WAP</p>
                   <audio controls>
                     <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3" type="audio/mp3" />

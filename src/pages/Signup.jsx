@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
-import { auth } from '../firebase'; // assure-toi que ce chemin est correct
-import { db } from '../firebase'; // ton instance Firestore
+import { auth } from '../firebase';
+import { db } from '../firebase';
 import { doc, setDoc } from 'firebase/firestore';
 import { useNavigate, Link } from 'react-router-dom';
 import Footer from '../components/Footer';
 import './Signup.css';
+import DOMPurify from 'dompurify';
 
 function Signup() {
   const navigate = useNavigate();
@@ -31,12 +32,12 @@ function Signup() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
-  
+
     if (formData.password !== formData.confirmPassword) {
       setError('Les mots de passe ne correspondent pas.');
       return;
     }
-  
+
     try {
       const userCredential = await createUserWithEmailAndPassword(
         auth,
@@ -44,21 +45,21 @@ function Signup() {
         formData.password
       );
       const user = userCredential.user;
-  
-      // Enregistrement des données utilisateur dans Firestore
+
+      // Sanitize all fields before sending to Firestore
       await setDoc(doc(db, 'users', user.uid), {
-        nom: formData.nom,
-        prenom: formData.prenom,
-        genre: formData.genre,
-        email: formData.email,
+        nom: DOMPurify.sanitize(formData.nom),
+        prenom: DOMPurify.sanitize(formData.prenom),
+        genre: DOMPurify.sanitize(formData.genre),
+        email: DOMPurify.sanitize(formData.email),
         createdAt: new Date()
       });
-  
-      navigate('/profile'); // ou une autre redirection après inscription
+
+      navigate('/profile');
     } catch (err) {
       setError(err.message);
     }
-  };  
+  };
 
   return (
     <div className="signup-wrapper">
@@ -149,7 +150,13 @@ function Signup() {
                 required
               />
 
-              {error && <p className="signup-error">{error}</p>}
+              {/* Protection XSS sur message d’erreur */}
+              {error && (
+                <p
+                  className="signup-error"
+                  dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(error) }}
+                />
+              )}
 
               <button type="submit">Valider</button>
             </form>

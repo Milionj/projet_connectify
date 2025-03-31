@@ -4,6 +4,7 @@ import { auth } from '../firebase';
 import { Link, useNavigate } from 'react-router-dom';
 import Footer from '../components/Footer';
 import './Login.css';
+import DOMPurify from 'dompurify';
 
 function Login() {
   const [formData, setFormData] = useState({ email: '', password: '' });
@@ -12,7 +13,8 @@ function Login() {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+    // Nettoie les valeurs saisies (même si on ne les affiche pas)
+    setFormData({ ...formData, [name]: DOMPurify.sanitize(value) });
   };
 
   const handleSubmit = async (e) => {
@@ -21,9 +23,10 @@ function Login() {
 
     try {
       await signInWithEmailAndPassword(auth, formData.email, formData.password);
-      navigate('/profile'); // redirection après connexion
+      navigate('/profile');
     } catch (err) {
-      setError('Email ou mot de passe incorrect.');
+      // Nettoie l’erreur reçue
+      setError(DOMPurify.sanitize('Email ou mot de passe incorrect.'));
     }
   };
 
@@ -57,7 +60,12 @@ function Login() {
                 required
               />
 
-              {error && <p className="login-error">{error}</p>}
+              {error && (
+                <p
+                  className="login-error"
+                  dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(error) }}
+                />
+              )}
 
               <button type="submit">Se Connecter</button>
             </form>
