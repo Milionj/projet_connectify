@@ -1,0 +1,88 @@
+.login-wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  .login-container {
+    display: flex;
+    flex: 1;
+  }
+  
+  .login-left {
+    flex: 1;
+    background-image: url('/images/radioconnexion.jpg');
+    background-size: cover;
+    background-position: center;
+  }
+  
+  .login-right {
+    flex: 1;
+    background-color: #21926D;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem;
+    color: white;
+  }
+  
+  .login-title {
+    font-family: 'Gravitas One', cursive;
+    font-size: 2rem;
+    color: #DACA3B;
+    margin-bottom: 1.5rem;
+  }
+  
+  .login-form-box {
+    background-color: rgba(0, 0, 0, 0.15);
+    padding: 2rem;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 400px;
+  }
+  
+  .login-form-box input {
+    width: 100%;
+    padding: 0.65rem;
+    margin-top: 0.25rem;
+    margin-bottom: 1.2rem;
+    font-size: 1rem;
+    border-radius: 8px;
+    border: none;
+    color: #333; /* texte foncé pour qu'il soit visible */
+  }
+  
+  .login-form-box button {
+    background-color: #DACA3B;
+    color: #333;
+    font-weight: bold;
+    padding: 0.6rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    width: 100%;
+    transition: background 0.3s;
+  }
+  
+  .login-form-box button:hover {
+    background-color: #c3b12a;
+  }
+  
+  .login-footer {
+    margin-top: 1rem;
+    text-align: center;
+    font-size: 0.95rem;
+  }
+  
+  .login-footer a {
+    color: #ffffff;
+    text-decoration: underline;
+  }
+  
+  .login-error {
+    color: red;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+  }
+  

@@ -1,59 +1,69 @@
 .navbar {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 100;
-    background: transparent;
-    font-family: 'Inter', sans-serif;
-    padding: 1.7rem 0 1rem !important;
-  }
-  
-  .navbar-container {
-    max-width: 1600px;
-    margin: 0 auto;
-    padding: 1.5rem 6rem; 
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .navbar-logo {
-    font-size: 3.6rem ;
-    font-family: "Chicle", serif;
-    color: #DACA3B;
-    font-weight: bold;
-    padding-left: 3.5rem !important; 
-  }
-  
-  .navbar-links {
-    display: flex;
-    align-items: center;
-    gap: 3.5rem;
-    padding-top: 0.3rem;
-  }
-  
-  .navbar-links a {
-    font-size: 2.3rem;
-    font-weight: 600;
-    color: white;
-    text-decoration: none;
-    transition: color 0.3s ease;
-  }
-  
-  .navbar-links .active {
-    color: #DACA3B;
-    font-weight: 700;
-  }
-  
-  .btn-inscription {
-    background-color: rgba(65, 85, 79, 0.8);
-    padding: 0.6rem 1.8rem;
-    border-radius: 9999px;
-    color: white;
-    font-size: 1.5rem;
-    font-weight: 600;
-    transition: background-color 0.3s ease;
-  }
-  
-  
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  background-color: #20835D; /* tu peux ajuster si besoin */
+  font-family: 'Inter', sans-serif;
+  padding: 1.7rem 0 1rem !important;
+}
+
+.navbar-container {
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 1.5rem 6rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar-logo {
+  font-size: 3.6rem;
+  font-family: "Chicle", serif;
+  color: #DACA3B;
+  font-weight: bold;
+  padding-left: 3.5rem !important;
+}
+
+.navbar-links {
+  display: flex;
+  align-items: center;
+  gap: 3.5rem;
+  padding-top: 0.3rem;
+}
+
+.navbar-links a {
+  font-size: 2.3rem;
+  font-weight: 600;
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.navbar-links .active {
+  color: #DACA3B;
+  font-weight: 700;
+}
+
+.btn-inscription {
+  background-color: rgba(65, 85, 79, 0.8);
+  padding: 0.6rem 1.8rem;
+  border-radius: 9999px;
+  color: white;
+  font-size: 1.5rem;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.logout-btn {
+  background-color: #216249ff;
+  padding: 0.6rem 1.8rem;
+  border-radius: 9999px;
+  color: white;
+  font-size: 1.5rem;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+}
+/* 1D5A43 */
