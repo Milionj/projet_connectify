@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: Connectify
+    ports:
+      - "3080:80"
+    restart: unless-stopped
+    env_file:
+      - .env.local
+    environment:
+      - NODE_ENV=production
+    networks:
+      - frontend_network
+
+networks:
+  frontend_network:
+    driver: bridge

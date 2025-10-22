@@ -1,0 +1,21 @@
+.welcome-multilang {
+    height: 30vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: white;
+  }
+  
+  .animated-text {
+    font-size: 5rem;
+    font-family: 'Gravitas One', cursive;
+    color: #004d40;
+    animation: fadeIn 0.8s ease forwards;
+  }
+  
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  

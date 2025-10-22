@@ -1,0 +1,114 @@
+.signup-wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #216249;
+  }
+  
+  .signup-container {
+    display: flex;
+    flex: 1;
+  }
+  
+  .signup-left {
+    flex: 1;
+    background-image: url('/images/mecradio.jpg');
+    background-size: cover;
+    background-position: center;
+  }
+  
+  .signup-right {
+    flex: 1;
+    background-color: #216249;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem;
+    color: white;
+  }
+  
+  .signup-title {
+    font-family: 'Gravitas One', cursive;
+    color: #DACA3B;
+    font-size: 2.3rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .signup-form-box {
+    background-color: rgba(0, 0, 0, 0.15);
+    padding: 2rem;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 420px;
+  }
+  
+  .name-fields {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .name-fields div {
+    flex: 1;
+  }
+  
+  .signup-form-box input {
+    width: 100%;
+    padding: 0.65rem;
+    border: none;
+    border-radius: 8px;
+    margin-top: 0.25rem;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    color: #333; /* texte foncé pour qu'il soit visible */
+  }
+
+  .signup-form-box input::placeholder {
+    color: #999; /* couleur du placeholder plus claire */
+  }
+  
+  .signup-gender {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .signup-form-box button {
+    background-color: #DACA3B;
+    color: #333;
+    font-weight: bold;
+    padding: 0.7rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    width: 100%;
+    transition: background 0.3s;
+  }
+  
+  .signup-form-box button:hover {
+    background-color: #c4b32a;
+  }
+
+  .signup-error {
+    color: red;
+    font-weight: bold;
+    background-color: rgba(255, 0, 0, 0.1);
+    padding: 0.6rem;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+    text-align: center;
+  }
+  
+  .signup-footer {
+    margin-top: 1rem;
+    text-align: center;
+    font-size: 0.95rem;
+  }
+  
+  .signup-footer a {
+    color: #ffffff;
+    text-decoration: underline;
+  }
+  
